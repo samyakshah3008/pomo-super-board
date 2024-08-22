@@ -8,6 +8,7 @@ import { useAuth } from "@clerk/nextjs";
 import { formatDistanceToNow } from "date-fns";
 import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Footer from "./footer";
 import Overlay from "./overlay";
@@ -46,6 +47,8 @@ const BoardCard = ({
     api.board.unfavorite
   );
 
+  const router = useRouter();
+
   const toggleFavorite: any = (e: any) => {
     e.stopPropagation();
     if (isFavorite) {
@@ -59,10 +62,12 @@ const BoardCard = ({
     }
   };
 
+  const onBoardClick = () => {
+    router.push(`/board/${id}`);
+  };
+
   return (
-    <div
-    // href={`/board/${id}`}
-    >
+    <div className="cursor-pointer" onClick={onBoardClick}>
       <div className="group aspect-[100/127] border rounded-lg flex flex-col justify-between overflow-hidden ">
         <div className="relative flex-1 bg-amber-50">
           <Image src={imageUrl} alt="doodle" fill className="object-fill" />
