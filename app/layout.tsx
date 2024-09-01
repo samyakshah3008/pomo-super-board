@@ -24,13 +24,6 @@ export default function RootLayout({
           <Toaster />
           <ModalProvider />
           {children}
-
-          {/* <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn> */}
         </ConvexClientProvider>
       </body>
     </html>
